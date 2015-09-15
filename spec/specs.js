@@ -21,4 +21,9 @@ describe('Ticket', function() {
     expect(testTicket.calculatePrice()).to.equal(5);
   });
 
+  it("assigns a price based on age, movie time and title", function () {
+    var testTicket = new Ticket("StarWars",12, 66);
+    expect(testTicket.calculatePrice()).to.equal(8);
+  });
+
 });
