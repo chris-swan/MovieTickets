@@ -7,7 +7,7 @@ function Ticket(movieTitle, showing, age) {
 Ticket.prototype.calculatePrice = function() {
   var basePrice = 15;
   var movieName = this.movieTitle;
-  var movieArray = ["JurrasicWorld", "StarWars", "SupermanvsBatman"];
+  var movieArray = ["Jurassic World", "Star Wars", "Superman vs Batman"];
   if (movieArray.indexOf(movieName) != -1) {
     var titlePrice = basePrice + 3;
   } else {
@@ -30,11 +30,23 @@ Ticket.prototype.calculatePrice = function() {
 }
 
 
+$(document).ready(function() {
 
-/
+  $("form#movie-selection").submit(function(event) {
+    event.preventDefault();
 
-// $(document).ready(function() {
-//
-//   new Ticket = {movieTitle: inputtedTitle, showing: inputtedShowing, age: inputtedAge};
-//
-// });
+
+    var inputtedTitle = $("#movieTitle").val();
+    var inputtedShowing = parseInt($("#showing").val());
+    var inputtedAge = parseInt($("input#age").val());
+
+
+    var newTicket = new Ticket(inputtedTitle, inputtedShowing, inputtedAge);
+    var ticketPrice = newTicket.calculatePrice();
+
+    $(".price").text("$" + ticketPrice);
+
+
+});
+
+});
